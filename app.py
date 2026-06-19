@@ -1,7 +1,9 @@
 from flask import Flask, request, send_file
+from flask_cors import CORS
 import subprocess
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/sdf_to_pdb', methods=['POST'])
 def sdf_to_pdb():
@@ -21,6 +23,3 @@ def sdf_to_pdb():
         as_attachment=True,
         download_name="compound.pdb"
     )
-
-if __name__ == "__main__":
-    app.run()
